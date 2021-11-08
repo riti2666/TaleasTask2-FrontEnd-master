@@ -9,11 +9,11 @@ const EditUser = () => {
     name: "",
     username: "",
     email: "",
-    phone: "",
+  
     website: ""
   });
 
-  const { name, username, email, phone, website } = user;
+  const { name, username, email, website } = user;
   const onInputChange = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -22,15 +22,17 @@ const EditUser = () => {
     loadUser();
   }, []);
 
+
+  //edit user
   const onSubmit = async e => {
     e.preventDefault();
-    // Update e nje useri
     await axios.put(`http://localhost:4000/users/edit-user/${id}`, user);
     history.push("/");
   };
 
+
+  //load user
   const loadUser = async () => {
-    //view i nje useri te caktuar qe te shfaqet ne butanat per update
     const result = await axios.get(`http://localhost:4000/users/load-user/${id}`);
     setUser(result.data);
   };
@@ -66,16 +68,6 @@ const EditUser = () => {
               placeholder="Enter Your E-mail Address"
               name="email"
               value={email}
-              onChange={e => onInputChange(e)}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control form-control-lg"
-              placeholder="Enter Your Phone Number"
-              name="phone"
-              value={phone}
               onChange={e => onInputChange(e)}
             />
           </div>

@@ -10,8 +10,7 @@ const Home = () => {
   }, []);
 
   const loadUsers = async () => {
-    // pjesa ketu ben te mundur marrjen e userave nga tablea users ne db
-    const result = await axios.get("http://localhost:4000/users");
+    const result = await axios.get(" http://localhost:4000/users");
     setUser(result.data.reverse());
   };
 
@@ -47,9 +46,15 @@ const Home = () => {
                   </Link>
                   <Link
                     className="btn btn-outline-primary mr-2"
+                    to={`/phones/add/${user._id}`}
+                  >
+                    Add phone
+                  </Link>
+                  <Link
+                    className="btn btn-outline-primary mr-2"
                     to={`/users/edit/${user._id}`}
                   >
-                    Edit
+                   Edit
                   </Link>
                   <Link
                     className="btn btn-danger"

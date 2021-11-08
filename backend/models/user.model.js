@@ -10,9 +10,11 @@ let userSchema = new Schema({
   email: {
     type: String
   },
-   phone: {
-    type: String
-  },
+  phones: [{
+    type: mongoose.Schema.Types.Number,
+    ref: 'Phone',
+    required: false
+  }],
    username: {
     type: String
   },
@@ -24,6 +26,5 @@ let userSchema = new Schema({
     collection: 'users'
   })
 
-  userSchema.plugin(autoIncrement.plugin, 'User');
-
+userSchema.plugin(autoIncrement.plugin, 'User');
 module.exports = mongoose.model('User', userSchema)

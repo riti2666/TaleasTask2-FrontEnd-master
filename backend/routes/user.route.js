@@ -2,12 +2,12 @@ let mongoose = require('mongoose'),
   express = require('express'),
   router = express.Router();
 
-// Student Model
+// User Model
 let userSchema = require('../models/user.model');
 
 
 // ketu brenda do behen fundsionet per edit/update/delete/getAllUsers/getUserByid
-// READ Users
+// Load   ALL Users
 router.route('/').get((req, res) => {
     userSchema.find((error, data) => {
       if (error) {
@@ -43,7 +43,7 @@ router.route('/edit-user/:id').put((req, res, next) => {
     })
   });
 
-// LOAD User
+// LOAD ONLY ONE User
 router.route('/load-user/:id').get((req, res) => {
     userSchema.findById(req.params.id, (error, data) => {
       if (error) {
